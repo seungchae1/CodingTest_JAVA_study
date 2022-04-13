@@ -7,7 +7,7 @@ public class Lv1_18 {
         int[] b=new int[a.length()];
         int y=x;
         int i=0;
-        while(y>=10){
+        while(y>=1){
             b[i]=y%10;
             y/=10;
             i++;
