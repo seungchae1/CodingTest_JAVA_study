@@ -3,24 +3,26 @@ package Lv1;
 public class Lv1_15 {
     public int[] solution(int[] array, int[][] commands) {
         int[] answer = new int[commands.length];
-        
         for(int i=0; i<commands.length; i++){
-            int[] a=new int[commands[i][1]-commands[i][0]+1];
-            for(int j=commands[i][0]; j<commands[i][1]; j++){
-                int k=commands[i][2];
-                for(int s=0; s<a.length; s++){
-                    a[s]=array[j];
+            int a=commands[i][0]-1;
+            int b=commands[i][1]-1;
+            int c=commands[i][2]-1;
+            int[] arr=new int[b-a+1];
+            for(int j=0; j<commands[i].length; j++){
+                for(int x=0; a<=b; x++){
+                	arr[x]=array[a];
+                	a++;
                 }
-                int flag=a[0];
-                for(int s=1; s<a.length; s++){
-                    if(a[s]>a[s-1]){
-                        flag=a[s];
-                        a[s]=a[s-1];
-                        a[s-1]=flag;
+                int flag=arr[0];
+                for(int s=1; s<arr.length; s++){
+                    if(arr[s]<arr[s-1]){
+                        flag=arr[s-1];
+                        arr[s-1]=arr[s];
+                        arr[s]=flag;
                     }
                 }
-                answer[i]=a[k];
             }
+            answer[i]=arr[c];
         }
         return answer;
     }
