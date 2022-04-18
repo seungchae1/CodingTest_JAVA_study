@@ -8,10 +8,14 @@ public class Lv1_25 {
             if(arr[i]%divisor==0)cnt++;
         if(cnt==0) return answer;
         answer = new int[cnt];
-        int j=0;
-        for(int i=0; j<cnt; i++){
-            if(arr[i]%divisor==0)answer[j]=arr[i];
-            j++;
+        int k=0;
+        for(int i=0; i<cnt; i++){
+            for(int j=k; j<arr.length; j++)
+                if(arr[j]%divisor==0){
+                    answer[i]=arr[j];
+                    k=j+1;
+                    break;
+                }
         }
         Arrays.sort(answer);
         return answer;
